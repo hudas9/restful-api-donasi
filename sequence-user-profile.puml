@@ -1,0 +1,30 @@
+@startuml
+actor User
+participant "API Gateway" as API
+participant UserController
+participant UserModel
+
+== Melihat Profil ==
+User -> API: GET /user/profile
+API -> UserController: profile()
+UserController -> UserModel: getUserProfile(userId)
+UserModel --> UserController: data profil
+UserController --> API: data profil
+API --> User: tampilkan data profil
+
+== Mengubah Profil ==
+User -> API: PUT /user/profile (data baru)
+API -> UserController: update(request)
+UserController -> UserModel: updateProfile(userId, data baru)
+UserModel --> UserController: profil terupdate
+UserController --> API: response (profil terupdate)
+API --> User: notifikasi profil terupdate
+
+== Menghapus Profil ==
+User -> API: DELETE /user/profile
+API -> UserController: destroy()
+UserController -> UserModel: deleteUser(userId)
+UserModel --> UserController: user terhapus
+UserController --> API: response (user terhapus)
+API --> User: notifikasi user terhapus
+@enduml

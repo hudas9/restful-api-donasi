@@ -1,0 +1,19 @@
+@startuml
+actor User
+participant "API Gateway" as API
+participant AuthController
+participant UserModel
+
+User -> API: POST /auth/login (email, password)
+API -> AuthController: login(request)
+AuthController -> UserModel: validateCredentials(email, password)
+UserModel --> AuthController: valid/invalid credentials
+alt jika valid
+    AuthController -> AuthController: generate JWT token
+    AuthController --> API: response (token)
+    API --> User: token diterima
+else jika invalid
+    AuthController --> API: response (error)
+    API --> User: error login
+end
+@enduml

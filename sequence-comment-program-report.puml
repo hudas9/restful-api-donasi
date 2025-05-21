@@ -1,0 +1,56 @@
+@startuml
+actor User
+participant "API Gateway" as API
+participant ProgramCommentController
+participant ReportCommentController
+participant ProgramCommentModel
+participant ReportCommentModel
+
+== Menambah Komentar pada Program ==
+User -> API: POST /programs/{programId}/comments (isi komentar)
+API -> ProgramCommentController: store(request)
+ProgramCommentController -> ProgramCommentModel: createComment(programId, data)
+ProgramCommentModel --> ProgramCommentController: komentar baru
+ProgramCommentController --> API: response (komentar berhasil)
+API --> User: notifikasi komentar berhasil
+
+== Mengedit Komentar pada Program ==
+User -> API: PUT /program-comments/{commentId} (isi baru)
+API -> ProgramCommentController: update(request, commentId)
+ProgramCommentController -> ProgramCommentModel: updateComment(commentId, data)
+ProgramCommentModel --> ProgramCommentController: komentar terupdate
+ProgramCommentController --> API: response (komentar terupdate)
+API --> User: notifikasi komentar terupdate
+
+== Menghapus Komentar pada Program ==
+User -> API: DELETE /program-comments/{commentId}
+API -> ProgramCommentController: destroy(commentId)
+ProgramCommentController -> ProgramCommentModel: deleteComment(commentId)
+ProgramCommentModel --> ProgramCommentController: komentar terhapus
+ProgramCommentController --> API: response (komentar terhapus)
+API --> User: notifikasi komentar terhapus
+
+== Menambah Komentar pada Laporan ==
+User -> API: POST /reports/{reportId}/comments (isi komentar)
+API -> ReportCommentController: store(request)
+ReportCommentController -> ReportCommentModel: createComment(reportId, data)
+ReportCommentModel --> ReportCommentController: komentar baru
+ReportCommentController --> API: response (komentar berhasil)
+API --> User: notifikasi komentar berhasil
+
+== Mengedit Komentar pada Laporan ==
+User -> API: PUT /report-comments/{commentId} (isi baru)
+API -> ReportCommentController: update(request, commentId)
+ReportCommentController -> ReportCommentModel: updateComment(commentId, data)
+ReportCommentModel --> ReportCommentController: komentar terupdate
+ReportCommentController --> API: response (komentar terupdate)
+API --> User: notifikasi komentar terupdate
+
+== Menghapus Komentar pada Laporan ==
+User -> API: DELETE /report-comments/{commentId}
+API -> ReportCommentController: destroy(commentId)
+ReportCommentController -> ReportCommentModel: deleteComment(commentId)
+ReportCommentModel --> ReportCommentController: komentar terhapus
+ReportCommentController --> API: response (komentar terhapus)
+API --> User: notifikasi komentar terhapus
+@enduml

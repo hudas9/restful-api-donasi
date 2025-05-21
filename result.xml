@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\Users\huda\Desktop\rest-api-donasi\phpunit.xml" tests="3" assertions="62" errors="0" failures="1" skipped="0" time="1.040062">
+    <testsuite name="Feature" tests="3" assertions="62" errors="0" failures="1" skipped="0" time="1.040062">
+      <testsuite name="Tests\Feature\Api\DonationTest" file="C:\Users\huda\Desktop\rest-api-donasi\tests\Feature\Api\DonationTest.php" tests="3" assertions="62" errors="0" failures="1" skipped="0" time="1.040062">
+        <testcase name="test_guest_can_create_donation" file="C:\Users\huda\Desktop\rest-api-donasi\tests\Feature\Api\DonationTest.php" line="33" class="Tests\Feature\Api\DonationTest" classname="Tests.Feature.Api.DonationTest" assertions="1" time="0.789149">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\Api\DonationTest::test_guest_can_create_donation&#13;
+Expected response status code [201] but received 500.
+Failed asserting that 500 is identical to 201.
+&#13;
+C:\Users\huda\Desktop\rest-api-donasi\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\Users\huda\Desktop\rest-api-donasi\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:159
+C:\Users\huda\Desktop\rest-api-donasi\tests\Feature\Api\DonationTest.php:50</failure>
+        </testcase>
+        <testcase name="test_user_can_see_donation_history" file="C:\Users\huda\Desktop\rest-api-donasi\tests\Feature\Api\DonationTest.php" line="65" class="Tests\Feature\Api\DonationTest" classname="Tests.Feature.Api.DonationTest" assertions="15" time="0.099597"/>
+        <testcase name="test_admin_can_see_donation_list" file="C:\Users\huda\Desktop\rest-api-donasi\tests\Feature\Api\DonationTest.php" line="94" class="Tests\Feature\Api\DonationTest" classname="Tests.Feature.Api.DonationTest" assertions="46" time="0.151315"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

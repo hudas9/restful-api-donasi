@@ -1,0 +1,19 @@
+### Get all reports
+GET http://localhost:8000/api/reports
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+### Get a single report
+GET http://localhost:8000/api/reports/{slug}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+### Create a comment report
+POST http://localhost:8000/api/reports/{slug}/comments
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "comment": "This is a comment on the report."
+}

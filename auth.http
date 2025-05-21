@@ -1,0 +1,34 @@
+### AUTH
+### Register a new user
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+API_KEY: {{token}}
+
+{
+    "name": "testuser",
+    "email": "testuser@example.com",
+    "password": "testpassword",
+    "password_confirmation": "testpassword"
+}
+
+### Login with the new user
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+{
+    "email": "testuser@example.com",
+    "password": "testpassword"
+}
+
+### Logout the user
+POST http://localhost:8000/api/auth/logout
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Resend Verification Email
+POST http://localhost:8000/api/auth/email/verify/resend
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}

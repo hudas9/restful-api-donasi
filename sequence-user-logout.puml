@@ -1,0 +1,11 @@
+@startuml
+actor User
+participant "API Gateway" as API
+participant AuthController
+
+User -> API: POST /auth/logout
+API -> AuthController: logout(request)
+AuthController -> AuthController: hapus token sesi
+AuthController --> API: response (logout sukses)
+API --> User: notifikasi logout sukses
+@enduml

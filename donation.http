@@ -1,0 +1,22 @@
+### Create a new donation
+POST http://localhost:8000/api/donations
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+{
+    "amount": 10000,
+    "donor_name": "John Doe",
+    "message": "Keep up the good work!"
+}
+
+### Get donation status
+GET http://localhost:8000/api/donations/status/{invoiceNumber}
+Accept: application/json
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+### Get donation history
+GET http://localhost:8000/api/donations/history
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}

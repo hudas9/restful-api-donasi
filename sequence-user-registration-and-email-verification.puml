@@ -1,0 +1,24 @@
+@startuml
+actor User
+participant "API Gateway" as API
+participant AuthController
+participant UserModel
+participant EmailService
+
+User -> API: POST /auth/register (data registrasi)
+API -> AuthController: register(request)
+AuthController -> UserModel: createUser(data)
+UserModel --> AuthController: user created
+AuthController -> EmailService: sendVerificationEmail(user)
+EmailService --> AuthController: email sent
+AuthController --> API: response (success, info verifikasi)
+API --> User: info verifikasi (cek email)
+
+User -> EmailService: klik link verifikasi (dari email)
+EmailService -> API: GET /auth/email/verify/{id}/{hash}
+API -> AuthController: verifyEmail(id, hash)
+AuthController -> UserModel: verifyUser(id)
+UserModel --> AuthController: user verified
+AuthController --> API: response (verifikasi sukses)
+API --> User: notifikasi verifikasi sukses
+@enduml

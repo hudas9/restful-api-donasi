@@ -1,0 +1,27 @@
+### USER
+### Get the authenticated user
+GET http://localhost:8000/api/user/profile
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Update the authenticated user
+PUT http://localhost:8000/api/user/profile
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "name": "updateduser",
+    "email": "testusernew@example.com".
+    "current_password": "testpassword",
+    "password": "newpassword",
+    "password_confirmation": "newpassword",
+    "image": "https://example.com/image.jpg"
+}
+
+### Delete the authenticated user
+DELETE http://localhost:8000/api/user/profile
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}

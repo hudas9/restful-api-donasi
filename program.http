@@ -1,0 +1,20 @@
+### Program
+### Get all programs
+GET http://localhost:8000/api/programs
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+### Get a single program
+GET http://localhost:8000/api/programs/{slug}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+
+### Create a comment program
+POST http://localhost:8000/api/programs/9/comments
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "comment": "This is a comment on the program."
+}

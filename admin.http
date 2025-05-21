@@ -1,0 +1,379 @@
+### Get all users
+GET http://localhost:8000/api/admin/users
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single user
+GET http://localhost:8000/api/admin/users/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Create a new user
+POST http://localhost:8000/api/admin/users
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "name": "newuser",
+    "email": "newuser@example.com",
+    "password": "newpassword",
+    "password_confirmation": "newpassword",
+    "image": "https://example.com/image.jpg",
+    "role": "user"
+}
+
+### Update a user
+PUT http://localhost:8000/api/admin/users/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "name": "updateduser",
+    "email": "testuser@example.com",
+    "password": "newpassword",
+    "password_confirmation": "newpassword",
+    "image": "https://example.com/image.jpg",
+    "role": "user",
+}
+
+### Reset password user
+POST http://localhost:8000/api/admin/users/{id}/reset-password
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "password": "newpassword",
+    "password_confirmation": "newpassword"
+}
+
+### Verify user
+POST http://localhost:8000/api/admin/users/{id}/verify-email
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Send verification email
+POST http://localhost:8000/api/admin/users/{id}/send-verification-email
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Send reset password email
+POST http://localhost:8000/api/admin/users/4/send-reset-password-email
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Delete a user
+DELETE http://localhost:8000/api/admin/users/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get all categories
+GET http://localhost:8000/api/admin/categories
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single category
+GET http://localhost:8000/api/admin/categories/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Create a new category
+POST http://localhost:8000/api/admin/categories
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "name": "newcategory"
+}
+
+### Update a category
+PUT http://localhost:8000/api/admin/categories/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "name": "updatedcategory"
+}
+
+### Delete a category
+DELETE http://localhost:8000/api/admin/categories/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get all program
+GET http://localhost:8000/api/admin/programs
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single program
+GET http://localhost:8000/api/admin/programs/{slug}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Create a new program
+POST http://localhost:8000/api/admin/programs
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "title": "New Program Title",
+    "description": "This is a new program.",
+    "content": "Detailed content about the program.",
+    "category_id": 1,
+    "image": "https://example.com/image.jpg",
+    "start_date": "2024-07-01",
+    "end_date": "2024-08-01",
+    "target_amount": 10000,
+    "is_published": true
+}
+
+### Update a program
+PUT http://localhost:8000/api/admin/programs/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "title": "Updated Program Title",
+    "description": "This is an updated program.",
+    "content": "Detailed content about the updated program.",
+    "category_id": 1,
+    "image": "https://example.com/image.jpg",
+    "start_date": "2024-07-01",
+    "end_date": "2024-08-01",
+    "target_amount": 10000,
+    "is_published": true
+}
+
+### Delete a program
+DELETE http://localhost:8000/api/admin/programs/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get all reports
+GET http://localhost:8000/api/admin/reports
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single report
+GET http://localhost:8000/api/admin/reports/{slug}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Create a new report
+POST http://localhost:8000/api/admin/reports
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "title": "New Report Title",
+    "summary": "This is a summary of the new report.",
+    "content": "Detailed content about the report.",
+    "program_id": 1,
+    "category_id": 1,
+    "image": "https://example.com/image.jpg",
+    "total_funds_used": 5000,
+    "report_date": "2024-07-01",
+    "beneficiaries": [
+        {
+            "name": "John Doe",
+            "amount": 2000
+        },
+        {
+            "name": "Jane Smith",
+            "amount": 3000
+        }
+    ],
+    "documentations": [
+        {
+            "file": "https://example.com/doc1.jpg",
+            "caption": "Documentation 1"
+        },
+        {
+            "file": "https://example.com/doc2.mp4",
+            "caption": "Documentation 2"
+        }
+    ],
+    "is_published": true
+}
+
+### Update a report
+PUT http://localhost:8000/api/admin/reports/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "title": "Updated Report Title",
+    "summary": "This is an updated summary of the report.",
+    "content": "Detailed content about the updated report.",
+    "program_id": 1,
+    "category_id": 1,
+    "image": "https://example.com/image.jpg",
+    "total_funds_used": 6000,
+    "report_date": "2024-07-01",
+    "beneficiaries": [
+        {
+            "name": "John Doe",
+            "amount": 2500
+        },
+        {
+            "name": "Jane Smith",
+            "amount": 3500
+        }
+    ],
+    "documentations": [
+        {
+            "file": "https://example.com/doc1.jpg",
+            "caption": "Updated Documentation 1"
+        },
+        {
+            "file": "https://example.com/doc2.mp4",
+            "caption": "Updated Documentation 2"
+        }
+    ],
+    "is_published": true
+}
+
+### Delete a report
+DELETE http://localhost:8000/api/admin/reports/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get all program comments
+GET http://localhost:8000/api/admin/program-comments
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single program comment
+GET http://localhost:8000/api/admin/program-comments/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Create a new program comment
+POST http://localhost:8000/api/admin/program-comments
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "program_id": 1,
+    "content": "This is a new program comment.",
+    "parent_id": null,
+}
+
+### Update a program comment
+PUT http://localhost:8000/api/admin/program-comments/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "content": "This is an updated program comment.",
+    "parent_id": null,
+}
+
+### Delete a program comment
+DELETE http://localhost:8000/api/admin/program-comments/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+
+
+### Get all report comments
+GET http://localhost:8000/api/admin/report-comments
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single report comment
+GET http://localhost:8000/api/admin/report-comments/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Create a new report comment
+POST http://localhost:8000/api/admin/report-comments
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "report_id": 1,
+    "content": "This is a new report comment.",
+    "parent_id": null,
+}
+
+### Update a report comment
+PUT http://localhost:8000/api/admin/report-comments/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "content": "This is an updated report comment.",
+    "parent_id": null,
+}
+
+### Delete a report comment
+DELETE http://localhost:8000/api/admin/report-comments/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+
+
+### Get all donations
+GET http://localhost:8000/api/admin/donations
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Get a single donation
+GET http://localhost:8000/api/admin/donations/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+### Update a donation
+PUT http://localhost:8000/api/admin/donations/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+
+{
+    "payment_status": "success",
+    "amount": 15000,
+    "message": "This is a message from user"
+}
+
+### Delete a donation
+DELETE http://localhost:8000/api/admin/donations/{id}
+Content-Type: application/json
+API_KEY: {{API_KEY}}
+Authorization: Bearer {access_token}
+

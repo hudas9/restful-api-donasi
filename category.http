@@ -1,0 +1,4 @@
+### Get all categories
+GET http://localhost:8000/api/categories
+Content-Type: application/json
+API_KEY: {{API_KEY}}

@@ -1,0 +1,74 @@
+@startuml
+actor Admin
+participant "API Gateway" as API
+participant AdminUserController
+participant AdminCategoryController
+participant AdminProgramController
+participant AdminReportController
+participant AdminDonationController
+participant AdminProgramCommentController
+participant AdminReportCommentController
+participant UserModel
+participant CategoryModel
+participant ProgramModel
+participant ReportModel
+participant DonationModel
+participant ProgramCommentModel
+participant ReportCommentModel
+
+== Kelola User ==
+Admin -> API: (GET|POST|PUT|DELETE) /admin/users
+API -> AdminUserController: index/store/update/destroy(request)
+AdminUserController -> UserModel: operasi user
+UserModel --> AdminUserController: hasil operasi
+AdminUserController --> API: response
+API --> Admin: notifikasi hasil
+
+== Kelola Kategori ==
+Admin -> API: (GET|POST|PUT|DELETE) /admin/categories
+API -> AdminCategoryController: index/store/update/destroy(request)
+AdminCategoryController -> CategoryModel: operasi kategori
+CategoryModel --> AdminCategoryController: hasil operasi
+AdminCategoryController --> API: response
+API --> Admin: notifikasi hasil
+
+== Kelola Program ==
+Admin -> API: (GET|POST|PUT|DELETE) /admin/programs
+API -> AdminProgramController: index/store/update/destroy(request)
+AdminProgramController -> ProgramModel: operasi program
+ProgramModel --> AdminProgramController: hasil operasi
+AdminProgramController --> API: response
+API --> Admin: notifikasi hasil
+
+== Kelola Laporan ==
+Admin -> API: (GET|POST|PUT|DELETE) /admin/reports
+API -> AdminReportController: index/store/update/destroy(request)
+AdminReportController -> ReportModel: operasi laporan
+ReportModel --> AdminReportController: hasil operasi
+AdminReportController --> API: response
+API --> Admin: notifikasi hasil
+
+== Kelola Donasi ==
+Admin -> API: (GET|PUT|DELETE) /admin/donations
+API -> AdminDonationController: index/update/destroy(request)
+AdminDonationController -> DonationModel: operasi donasi
+DonationModel --> AdminDonationController: hasil operasi
+AdminDonationController --> API: response
+API --> Admin: notifikasi hasil
+
+== Kelola Komentar Program ==
+Admin -> API: (GET|POST|PUT|DELETE) /admin/program-comments
+API -> AdminProgramCommentController: index/store/update/destroy(request)
+AdminProgramCommentController -> ProgramCommentModel: operasi komentar program
+ProgramCommentModel --> AdminProgramCommentController: hasil operasi
+AdminProgramCommentController --> API: response
+API --> Admin: notifikasi hasil
+
+== Kelola Komentar Laporan ==
+Admin -> API: (GET|POST|PUT|DELETE) /admin/report-comments
+API -> AdminReportCommentController: index/store/update/destroy(request)
+AdminReportCommentController -> ReportCommentModel: operasi komentar laporan
+ReportCommentModel --> AdminReportCommentController: hasil operasi
+AdminReportCommentController --> API: response
+API --> Admin: notifikasi hasil
+@enduml

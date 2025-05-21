@@ -1,0 +1,37 @@
+@startuml
+actor User
+
+User -> "API Gateway": GET /programs/{slug}
+"API Gateway" -> ProgramController: show($slug)
+ProgramController -> ProgramModel: show($slug)
+ProgramModel --> ProgramController: program detail
+ProgramController --> "API Gateway": program detail
+"API Gateway" --> User: show program detail
+
+User -> "API Gateway": POST /donations (program_id, amount, etc)
+"API Gateway" -> DonationController: store()
+DonationController -> ProgramModel: find(program_id)
+ProgramModel --> DonationController: program
+DonationController -> DonationModel: createDonation()
+DonationModel --> DonationController: donation + invoice
+DonationController -> PaymentGateway: createPayment(invoice)
+PaymentGateway --> DonationController: payment_url
+DonationController --> "API Gateway": payment_url, invoice
+"API Gateway" --> User: show payment instructions
+
+User -> PaymentGateway: melakukan pembayaran
+
+PaymentGateway -> "API Gateway": POST /donations/notification
+"API Gateway" -> DonationController: handleNotification()
+DonationController -> DonationModel: updateStatus()
+DonationModel --> DonationController: status updated
+DonationController --> "API Gateway": 200 OK
+
+User -> "API Gateway": GET /donations/status/{invoiceNumber}
+"API Gateway" -> DonationController: status(invoiceNumber)
+DonationController -> DonationModel: getStatus(invoiceNumber)
+DonationModel --> DonationController: status
+DonationController --> "API Gateway": status
+"API Gateway" --> User: show status
+
+@enduml

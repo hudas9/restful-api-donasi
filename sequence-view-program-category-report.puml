@@ -1,0 +1,34 @@
+@startuml
+actor User
+participant "API Gateway" as API
+participant ProgramController
+participant CategoryController
+participant ReportController
+participant ProgramModel
+participant CategoryModel
+participant ReportModel
+
+== Melihat Daftar Program ==
+User -> API: GET /programs
+API -> ProgramController: index()
+ProgramController -> ProgramModel: getAllPrograms()
+ProgramModel --> ProgramController: list of programs
+ProgramController --> API: list of programs
+API --> User: tampilkan daftar program
+
+== Melihat Daftar Kategori ==
+User -> API: GET /categories
+API -> CategoryController: index()
+CategoryController -> CategoryModel: getAllCategories()
+CategoryModel --> CategoryController: list of categories
+CategoryController --> API: list of categories
+API --> User: tampilkan daftar kategori
+
+== Melihat Daftar Laporan ==
+User -> API: GET /reports
+API -> ReportController: index()
+ReportController -> ReportModel: getAllReports()
+ReportModel --> ReportController: list of reports
+ReportController --> API: list of reports
+API --> User: tampilkan daftar laporan
+@enduml
