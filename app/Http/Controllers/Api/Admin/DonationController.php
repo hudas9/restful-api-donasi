@@ -25,9 +25,7 @@ class DonationController extends Controller
                         ->orWhere('donor_name', 'like', '%' . $request->search . '%')
                         ->orWhere('donor_email', 'like', '%' . $request->search . '%');
                 });
-            })
-            ->latest()
-            ->paginate(20);
+            });
 
         return response()->json([
             'message' => 'Donations retrieved successfully',

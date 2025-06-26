@@ -165,9 +165,7 @@ class DonationController extends Controller
         $user = $request->user();
 
         $donations = Donation::where('user_id', $user->id)
-            ->with(['program:id,title,image'])
-            ->latest()
-            ->paginate(10);
+            ->with(['program:id,title,image']);
 
         return response()->json([
             'message' => 'Donation history retrieved',

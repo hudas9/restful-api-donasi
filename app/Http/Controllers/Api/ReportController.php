@@ -15,9 +15,7 @@ class ReportController extends Controller
             ->when($request->program, fn($q) => $q->whereHas('program', fn($q) => $q->where('slug', $request->program)))
             ->with(['category', 'user', 'program', 'documentations'])
             ->where('is_published', true)
-            ->withCount('comments')
-            ->latest()
-            ->paginate(10);
+            ->withCount('comments');
 
         return response()->json([
             'message' => 'Reports retrieved successfully',
@@ -48,9 +46,7 @@ class ReportController extends Controller
     {
         $reports = Report::with(['category', 'user'])
             ->whereHas('category', fn($query) => $query->where('slug', $categorySlug))
-            ->where('is_published', true)
-            ->latest()
-            ->paginate(10);
+            ->where('is_published', true);
 
         return response()->json([
             'message' => 'Reports retrieved successfully',

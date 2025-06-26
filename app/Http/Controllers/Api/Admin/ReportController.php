@@ -22,9 +22,7 @@ class ReportController extends Controller
         $reports = Report::query()
             ->when($request->category, fn($q) => $q->whereHas('category', fn($q) => $q->where('slug', $request->category)))
             ->when($request->program, fn($q) => $q->whereHas('program', fn($q) => $q->where('slug', $request->program)))
-            ->with(['category', 'user', 'program', 'documentations'])
-            ->latest()
-            ->paginate(10);
+            ->with(['category', 'user', 'program', 'documentations']);
 
         return response()->json([
             'message' => 'Reports retrieved successfully',

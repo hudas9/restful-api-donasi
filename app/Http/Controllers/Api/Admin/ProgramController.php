@@ -24,9 +24,7 @@ class ProgramController extends Controller
                     $q->where('slug', $request->category);
                 });
             })
-            ->with(['category', 'user'])
-            ->latest()
-            ->paginate(10);
+            ->with(['category', 'user']);
 
         return response()->json([
             'message' => 'Programs retrieved successfully',

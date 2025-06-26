@@ -18,9 +18,7 @@ class ProgramController extends Controller
             })
             ->where('is_published', true)
             ->with(['category', 'user'])
-            ->withCount('comments')
-            ->latest()
-            ->paginate(10);
+            ->withCount('comments');
 
         return response()->json([
             'message' => 'Programs retrieved successfully',
@@ -53,9 +51,7 @@ class ProgramController extends Controller
             ->whereHas('category', function ($query) use ($categorySlug) {
                 $query->where('slug', $categorySlug);
             })
-            ->where('is_published', true)
-            ->latest()
-            ->paginate(10);
+            ->where('is_published', true);
 
         return response()->json([
             'message' => 'Programs retrieved successfully',
